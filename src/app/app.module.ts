@@ -1,0 +1,32 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { AppComponent } from './app.component';
+import { AngularFireModule } from 'angularfire2';
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyA5UVtY4RH6xTsvpHiNK-y6vCRTdf0bwqg',
+  authDomain: 'quien-ba643.firebaseapp.com',
+  databaseURL: 'https://quien-ba643.firebaseio.com/',
+  storageBucket: 'gs://quien-ba643.appspot.com',
+  messagingSenderId: ''
+};
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
