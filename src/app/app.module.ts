@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
+import { LinkifyPipe } from './linkify.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -18,7 +19,8 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LinkifyPipe
   ],
   imports: [
     BrowserModule,

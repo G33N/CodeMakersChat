@@ -1,12 +1,21 @@
-<div class="row columns">
-  <button (click)="login()" *ngIf="!name">Login With Facebook</button>
-  <button class="google" (click)="loginGoogle()" *ngIf="!name">Login With Google</button>
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img class="brand-logo" src="https://firebasestorage.googleapis.com/v0/b/codemakers-48269.appspot.com/o/logo%2FCodeMakers-01.png?alt=media&token=fbc15b02-5d2b-4013-98d1-a10b215cf8b0" width="30" height="30" alt="">
+  </a>
+</nav>
+<button (click)="login()" *ngIf="!name">Login With Facebook</button>
+<button class="google" (click)="loginGoogle()" *ngIf="!name">Login With Google</button>
 
-  <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
-
-    <div class="chat-container" *ngFor="let item of items | async">
-      <a href="#">{{item.name}}</a>
-
-      <p>{{item.message}}</p>
+<div class="container">
+  <div class="row">
+    <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+    <div class="layer">
+      <div class="col-lg-12 chat-messages">
+        <div class="chat-container" *ngFor="let item of items | async">
+          <a href="#">{{item.name}}</a>
+          <p>{{item.message}}</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
