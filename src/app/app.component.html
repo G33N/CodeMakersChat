@@ -1,22 +1,2 @@
-<nav class="navbar navbar-light bg-faded">
-  <a class="navbar-brand" href="#">
-    <img class="brand-logo" src="https://firebasestorage.googleapis.com/v0/b/codemakers-48269.appspot.com/o/logo%2FCodeMakers-01.png?alt=media&token=fbc15b02-5d2b-4013-98d1-a10b215cf8b0" width="30" height="30" alt="">
-  </a>
-</nav>
-<button type="button" class="btn btn-gplus" (click)="loginGoogle()" *ngIf="!name"><i class="fa fa-google-plus left"></i> Google +</button>
-
-<button type="button" class="btn btn-fb" (click)="loginFacebook()" *ngIf="!name"><i class="fa fa-facebook left"></i> Facebook</button>
-
-<div class="container">
-  <div class="row">
-    <input type="text" id="message" *ngIf="name" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
-    <div class="col-lg-12 layer">
-      <div class="col-lg-12 chat-messages" #scrollMe>
-        <div class="chat-container" *ngFor="let item of items | async">
-          <a href="#">{{ item.name }}</a>
-          <p class="text-wrap" innerHtml="{{ item.message | linkify }}"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>

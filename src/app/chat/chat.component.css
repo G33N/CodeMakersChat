@@ -1,0 +1,68 @@
+input#message {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #4C4C4C;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-bottom: 3em;
+  padding: 1.2em 0;
+}
+
+.chat-container {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.text-wrap {
+  overflow-wrap: break-word;
+}
+
+.chat-messages {
+  z-index: -1;
+  top: 0;
+  height: 35em;
+  overflow-y: scroll;
+}
+
+.layer {
+  position: relative;
+  height: 35em;
+  background: -moz-linear-gradient(top, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
+  background: -webkit-linear-gradient(top, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
+  background: linear-gradient(to bottom, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6242226', endColorstr='#00242226', GradientType=0);
+}
+
+.chat-container a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #816A98;
+  font-size: .8em;
+  letter-spacing: 2px;
+}
+
+.chat-container p {
+  background: #323035;
+  padding: 1.1em;
+  color: white;
+  margin: 5px 0 10px 0;
+}
+
+
+/* SCROLL STYLE */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 13px rgba(125, 108, 149, 1);
+}

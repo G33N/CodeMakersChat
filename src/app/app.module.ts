@@ -6,6 +6,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { LinkifyPipe } from './linkify.pipe';
+import { NavbarComponent } from './navbar/navbar.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { LoginComponent } from './login/login.component';
+import { ContentComponent } from './content/content.component';
+import { ChatComponent } from './chat/chat.component';
+import { routes } from './app.routing';
 
 // Must export the config
 export const firebaseConfig = {
@@ -20,9 +26,15 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LinkifyPipe
+    LinkifyPipe,
+    NavbarComponent,
+    WelcomeComponent,
+    LoginComponent,
+    ContentComponent,
+    ChatComponent
   ],
   imports: [
+    routes,
     BrowserModule,
     FormsModule,
     HttpModule,

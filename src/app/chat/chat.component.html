@@ -1,0 +1,15 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <input type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+      <div class="col-lg-12 layer">
+        <div class="col-lg-12 chat-messages" #scrollMe>
+          <div class="chat-container" *ngFor="let item of items | async">
+            <a href="#">{{ item.name }}</a>
+            <p class="text-wrap" innerHtml="{{ item.message | linkify }}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
