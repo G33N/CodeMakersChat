@@ -22,22 +22,19 @@ input#message {
 }
 
 .chat-messages {
+  z-index: -1;
+  top: 0;
   height: 35em;
   overflow-y: scroll;
 }
 
 .layer {
-  height: 100%;
-  width:  100%;
-  z-index: 1;
-  background: rgba(36, 34, 38, 0.69);
-  background: -moz-linear-gradient(top, rgba(36, 34, 38, 0.69) 0%, rgba(139, 46, 39, 0) 53%, rgba(231, 56, 39, 0) 100%);
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(36, 34, 38, 0.69)), color-stop(53%, rgba(139, 46, 39, 0)), color-stop(100%, rgba(231, 56, 39, 0)));
-  background: -webkit-linear-gradient(top, rgba(36, 34, 38, 0.69) 0%, rgba(139, 46, 39, 0) 53%, rgba(231, 56, 39, 0) 100%);
-  background: -o-linear-gradient(top, rgba(36, 34, 38, 0.69) 0%, rgba(139, 46, 39, 0) 53%, rgba(231, 56, 39, 0) 100%);
-  background: -ms-linear-gradient(top, rgba(36, 34, 38, 0.69) 0%, rgba(139, 46, 39, 0) 53%, rgba(231, 56, 39, 0) 100%);
-  background: linear-gradient(to bottom, rgba(36, 34, 38, 0.69) 0%, rgba(139, 46, 39, 0) 53%, rgba(231, 56, 39, 0) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#242226', endColorstr='#e73827', GradientType=0);
+  position: relative;
+  height: 35em;
+  background: -moz-linear-gradient(top, rgba(36,34,38,0.9) 0%, rgba(36,34,38,0.9) 4%, rgba(36,34,38,0.7) 15%, rgba(36,34,38,0.2) 24%, rgba(36,34,38,0) 27%, rgba(36,34,38,0) 100%);
+background: -webkit-linear-gradient(top, rgba(36,34,38,0.9) 0%,rgba(36,34,38,0.9) 4%,rgba(36,34,38,0.7) 15%,rgba(36,34,38,0.2) 24%,rgba(36,34,38,0) 27%,rgba(36,34,38,0) 100%);
+background: linear-gradient(to bottom, rgba(36,34,38,0.9) 0%,rgba(36,34,38,0.9) 4%,rgba(36,34,38,0.7) 15%,rgba(36,34,38,0.2) 24%,rgba(36,34,38,0) 27%,rgba(36,34,38,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6242226', endColorstr='#00242226',GradientType=0 );
 }
 
 .chat-container a {
@@ -57,4 +54,19 @@ input#message {
 
 .google {
   background: #CB5441;
+}
+
+
+/* SCROLL STYLE */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 13px rgba(125, 108, 149, 1);
 }
