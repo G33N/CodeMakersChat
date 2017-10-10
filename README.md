@@ -2,7 +2,7 @@
 
 ![alt text](https://firebasestorage.googleapis.com/v0/b/codemakers-48269.appspot.com/o/logo%2FCodeMakers-01.png?alt=media&token=fbc15b02-5d2b-4013-98d1-a10b215cf8b0)
 
-This is a social network for make a team.
+A chat with angular 4 and Firebase
 
 ## DB schema
 
