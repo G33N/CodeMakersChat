@@ -2,3 +2,10 @@
   height: 40px;
   width: auto;
 }
+a {
+  font-weight: bold;
+  color: #FFF !important;
+}
+a:hover {
+  color: #FFF;
+}
