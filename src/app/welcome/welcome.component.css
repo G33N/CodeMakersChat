@@ -1,12 +1,7 @@
 .welcome {
   margin-top: 3em;
 }
-h1, h2, h3 {
-  color: #FFF;
-}
-.badge-info {
-  background: #3F65A5;
-}
+
 .info-container {
   padding-top: 0.5em;
   background-color: #323135;

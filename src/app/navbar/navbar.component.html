@@ -1,7 +1,15 @@
 <nav class="navbar navbar-light bg-faded">
   <a class="navbar-brand" href="#">
-    <img class="brand-logo" src="https://firebasestorage.googleapis.com/v0/b/codemakers-48269.appspot.com/o/logo%2FCodeMakers-01.png?alt=media&token=fbc15b02-5d2b-4013-98d1-a10b215cf8b0" width="30" height="30" alt="">
+    <img class="brand-logo" src="https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/MAndale-04.png?alt=media&token=09b1e983-8064-49d3-8d02-2f563b899320" width="30" height="30" alt="">
   </a>
-  <a class="nav-link" (click)="logout()" *ngIf="name"><i class="fa fa-sign-out" aria-hidden="true"></i>
-Logout</a>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/content/profile" *ngIf="user"><i class="fa fa-person" aria-hidden="true"></i>
+      Ver perfil</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="logout()" *ngIf="user"><i class="fa fa-sign-out" aria-hidden="true"></i>
+    Logout</a>
+    </li>
+  </ul>
 </nav>

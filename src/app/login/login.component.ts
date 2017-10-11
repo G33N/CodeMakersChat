@@ -8,17 +8,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  name: any;
+  user: any;
   loginWith: string;
   constructor(public af: AngularFire, public router: Router) {
     this.af.auth.subscribe(auth => {
       if (auth) {
-        this.name = auth;
+        this.user = auth;
       }
     });
   }
 
   ngOnInit() {
+
   }
 
   loginFacebook() {
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
       provider: AuthProviders.Facebook,
       method: AuthMethods.Popup
     }).then(data => {
-      this.router.navigate(['/content']);
+      this.router.navigate(['/content/chat']);
     })
   }
   loginGoogle() {
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
       provider: AuthProviders.Google,
       method: AuthMethods.Popup
     }).then(data => {
-      this.router.navigate(['/content']);
+      this.router.navigate(['/content/chat']);
     })
   }
 

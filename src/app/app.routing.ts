@@ -5,6 +5,7 @@ import { ContentComponent } from './content/content.component';
 import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const router: Routes = [
   {
@@ -19,16 +20,16 @@ export const router: Routes = [
   {
     path: 'content',
     component: ContentComponent,
-    // children: [
-    //   {
-    //     path: 'settings',
-    //     component: SettingsComponent
-    //   },
-    //   {
-    //     path: 'header',
-    //     component: DashboardHeaderComponent
-    //   }
-    // ]
+    children: [
+      {
+        path: 'profile',
+        component: ProfileComponent
+      },
+      {
+        path: 'chat',
+        component: ChatComponent,
+      }
+    ]
   },
   {
     path: 'login',

@@ -6,7 +6,15 @@ body {
 * {
     font-family: 'Raleway';
 }
-
+h1, h2, h3, h4 {
+  color: #FFF;
+}
+.badge-info {
+  background: #3F65A5;
+}
+.padding {
+  padding-top: 1em;
+}
 /* Material social buttons */
 .btn {
     font-size: .8rem;
@@ -25,6 +33,9 @@ body {
 }
 .btn-gplus {
     background-color: #DD4B39;
+}
+.btn-primary {
+  background: #426BB1;
 }
 .waves-effect {
     position: relative;

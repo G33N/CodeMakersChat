@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <a class="go-back" routerLink="/content/chat"><i class="fa fa-chevron-left" aria-hidden="true">Volver</i>
+</a>
+      <h2>Hola {{ profile.name }}!</h2>
+      <img src="{{profile.photoURL}}" alt="">
+      <div class="col-lg-6 profile-info">
+        <h4>followers {{profile.followers}}</h4>
+      </div>
+      <input type="text" placeholder="Cuenta una historia sobre ti..." [(ngModel)]="profile.about" />
+      <label>Fecha de Nacimiento</label>
+      <input type="date" [(ngModel)]="profile.birth" />
+      <label>Genero</label>
+      <select [(ngModel)]="profile.gender" placeholder="Genero...">
+        <option *ngFor="let gender of genders | async" value="{{ gender.title }}"><i class="fa {{ gender.icon }}" aria-hidden="true"></i>{{ gender.title }}</option>
+      </select>
+      <div class="padding">
+        <button type="button" class="btn btn-primary btn-block" (click)="createProfile()"> Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

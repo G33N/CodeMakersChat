@@ -1,6 +1,6 @@
 # Code Makers Chat
 
-![alt text](https://firebasestorage.googleapis.com/v0/b/codemakers-48269.appspot.com/o/logo%2FCodeMakers-01.png?alt=media&token=fbc15b02-5d2b-4013-98d1-a10b215cf8b0)
+![alt text](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/MAndale-04.png?alt=media&token=09b1e983-8064-49d3-8d02-2f563b899320)
 
 A chat with angular 4 and Firebase
 
@@ -16,11 +16,12 @@ A chat with angular 4 and Firebase
 -|conversations
     -|userID
         -|fromID
-            saved: boolean
-                -|message
-                    date: date
-                    body: string
-                    like: boolean -->
+            name: string
+              -|message
+                  name: string
+                  date: date
+                  body: string
+                  like: boolean -->
 
 ## How install
 

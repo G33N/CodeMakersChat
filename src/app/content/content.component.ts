@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(public af: AngularFire, public router: Router) {
+
+  }
 
   ngOnInit() {
+    
+  }
+
+  checkSession(){
+    this.af.auth.subscribe(auth => {
+      if (!auth) {
+        this.router.navigate(['/welcome']);
+      }
+    });
   }
 
 }

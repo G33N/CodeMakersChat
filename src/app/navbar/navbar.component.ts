@@ -8,11 +8,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-name: any;
+user: any;
   constructor(public af: AngularFire, public router: Router) {
     this.af.auth.subscribe(auth => {
       if (auth) {
-        this.name = auth;
+        this.user = auth;
       }
     });
   }
