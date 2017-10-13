@@ -12,7 +12,7 @@ export class WelcomeComponent implements OnInit {
   constructor(public af: AngularFire, public router: Router) { }
 
   ngOnInit() {
-    this.checkSession();
+    //this.checkSession();
   }
 
   checkSession(){

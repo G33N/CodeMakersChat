@@ -23,10 +23,11 @@ currentAuth: any;
   }
 
   ngOnInit() {
-    this.countFollowers()
+    this.countFollowers();
+    this.updateProfile();
   }
   countFollowers() {
-    this.af.database.list(`conversations/${this.currentAuth.uid}`).subscribe(data => {
+    this.af.database.list(`profile/${this.currentAuth.uid}/conversations`).subscribe(data => {
       this.profile.followers = data.length;
     });
   }
@@ -51,7 +52,6 @@ currentAuth: any;
   }
   createProfile() {
     this.af.auth.subscribe(auth => {
-      this.updateProfile();
       this.af.database.object(`profile/${auth.uid}`).set(this.profile);
     });
     this.router.navigate(['/content/chat']);

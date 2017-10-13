@@ -2,6 +2,9 @@
 
 body {
     background-color:#242226;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
 }
 * {
     font-family: 'Raleway';
@@ -14,6 +17,10 @@ h1, h2, h3, h4 {
 }
 .padding {
   padding-top: 1em;
+}
+.vertical-align {
+  position: absolute;
+  top: 40%;
 }
 /* Material social buttons */
 .btn {

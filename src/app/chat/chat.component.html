@@ -1,14 +1,16 @@
-<app-conversation></app-conversation>
-  <div class="container">
-    <div class="row">
-      <input type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
-      <div class="col-lg-12 layer">
-        <div class="col-lg-12 chat-messages" #scrollMe>
-          <div class="chat-container" *ngFor="let message of messages | async">
-            <a href="#">{{ message.name }}</a>
-            <p class="text-wrap" innerHtml="{{ message.body | linkify }}"></p>
-          </div>
-        </div>
-      </div>
+<app-conversation (conversation)="getConversation($event)"></app-conversation>
+<input *ngIf="conversation" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+<div class="container vertical-align" *ngIf="!conversation">
+  <div class="row">
+    <h3>Para optener mas seguidores, comparte este link en tus redes sociales para conseguirlos!</h3>
+    <a href="https://quien-ba643.firebaseapp.com/">htpps://quien-ba643.firebaseapp.com/content/chat/{{ currentAuth.uid }}</a>
+  </div>
+</div>
+<div class="col-lg-12 layer">
+  <div class="col-lg-12 chat-messages">
+    <div class="chat-container" *ngFor="let message of messages | async">
+      <a href="#">{{ message.name }}</a>
+      <p class="text-wrap" innerHtml="{{ message.body | linkify }}"></p>
     </div>
   </div>
+</div>

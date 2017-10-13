@@ -25,8 +25,8 @@ input#message {
 .chat-messages {
   z-index: -1;
   top: 0;
-  height: 35em;
   overflow-y: scroll;
+  height: 30em;
 }
 
 .layer {

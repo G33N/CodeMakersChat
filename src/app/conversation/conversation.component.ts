@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -9,14 +9,15 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
 export class ConversationComponent implements OnInit {
 conversations: FirebaseListObservable<any>;
 currentAuth: any;
+@Output() conversation = new EventEmitter();
   constructor(public af: AngularFire) {
     this.readCurrentAuth();
     this.readConversations();
   }
 
   ngOnInit() {
-
   }
+
   readCurrentAuth() {
     this.af.auth.subscribe(auth => {
       if (auth) {
@@ -24,8 +25,12 @@ currentAuth: any;
       }
     });
   }
+
   readConversations() {
-    this.conversations = this.af.database.list(`conversations/${this.currentAuth.uid}`);
-    console.log(this.conversations)
+    this.conversations = this.af.database.list(`profile/${this.currentAuth.uid}/conversations`);
+  }
+
+  conversationSelect(conversation){
+    this.conversation.emit(conversation.$key);
   }
 }

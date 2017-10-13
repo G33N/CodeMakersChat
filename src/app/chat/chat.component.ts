@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
 
@@ -10,17 +10,18 @@ import { Router } from '@angular/router';
 export class ChatComponent implements OnInit {
   messages: FirebaseListObservable<any>;
   currentAuth: any;
-  loginWith = 'google';
   msgVal: string = '';
   like: boolean;
+  conversation: string;
+  welcome: string;
+  followers: number;
 
   constructor(public af: AngularFire, public router: Router) {
     this.readCurrentAuth();
-    this.readMessages();
   }
 
   chatSend(theirMessage: string) {
-      this.messages.push({ body: theirMessage, date: new Date(), like: this.like});
+      this.messages.push({ body: theirMessage, date: new Date(), like: false, name: 'Celiz Matias' });
     this.msgVal = '';
   }
 
@@ -35,12 +36,17 @@ export class ChatComponent implements OnInit {
     });
   }
   readMessages() {
-    this.messages = this.af.database.list(`conversations/${this.currentAuth.uid}/GuIShM2ubBTdvMaoies4cvlKlHx1`, {
+    this.messages = this.af.database.list(`profile/${this.currentAuth.uid}/conversations/${this.conversation}`, {
       query: {
         limitToLast: 40
       }
     });
   }
+  getConversation(ev){
+    this.conversation = ev;
+    this.readMessages();
+  }
+
   @ViewChild('scrollMe') public myScrollContainer: ElementRef;
 
     ngOnInit() {

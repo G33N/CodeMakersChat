@@ -23,6 +23,12 @@ label {
 .go-back{
   color: #AA3946;
 }
+.avatar {
+  max-width: 9em;
+  height: auto;
+  border: none;
+  
+}
 /* ===== Select Box ===== */
 select {
     padding:3px;
