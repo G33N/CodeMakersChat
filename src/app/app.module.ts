@@ -36,7 +36,7 @@ export const firebaseConfig = {
     ChatComponent,
     ConversationComponent,
     ProfileComponent
-  ],
+    ],
   imports: [
     routes,
     BrowserModule,

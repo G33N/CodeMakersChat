@@ -6,23 +6,25 @@ A chat with angular 4 and Firebase
 
 ## DB schema
 
-![dbSchema](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/git%2FScreen%20Shot%202017-10-13%20at%2019.26.01.png?alt=media&token=625f5b4e-fb25-4460-814a-05a914df7731)
+![dbSchema](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/git%2FScreen%20Shot%202017-10-14%20at%2000.48.34.png?alt=media&token=b0485d11-0fe6-4e08-805a-14229f85ab0d)
 
 <!-- -|users
-    -|userID
+    -|$uid
         name: string
         followers: number
         gender: string
         birth: date
         about: string
         photoURL: string
-          -|conversations
-              -|fromID
-                  -|message
-                      name: string
-                      date: date
-                      body: string
-                      like: boolean -->
+
+-|conversations
+    -|$uid
+        -|fromID
+            -|message
+                name: string
+                date: date
+                body: string
+                like: boolean -->
 
 ## How install
 

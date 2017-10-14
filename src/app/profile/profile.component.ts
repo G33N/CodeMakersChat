@@ -27,7 +27,7 @@ currentAuth: any;
     this.updateProfile();
   }
   countFollowers() {
-    this.af.database.list(`profile/${this.currentAuth.uid}/conversations`).subscribe(data => {
+    this.af.database.list(`conversations/${this.currentAuth.uid}`).subscribe(data => {
       this.profile.followers = data.length;
     });
   }

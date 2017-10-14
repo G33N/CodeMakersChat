@@ -36,7 +36,7 @@ export class ChatComponent implements OnInit {
     });
   }
   readMessages() {
-    this.messages = this.af.database.list(`profile/${this.currentAuth.uid}/conversations/${this.conversation}`, {
+    this.messages = this.af.database.list(`conversations/${this.currentAuth.uid}/${this.conversation}`, {
       query: {
         limitToLast: 40
       }

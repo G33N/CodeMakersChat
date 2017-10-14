@@ -27,7 +27,7 @@ currentAuth: any;
   }
 
   readConversations() {
-    this.conversations = this.af.database.list(`profile/${this.currentAuth.uid}/conversations`);
+    this.conversations = this.af.database.list(`conversations/${this.currentAuth.uid}`);
   }
 
   conversationSelect(conversation){
