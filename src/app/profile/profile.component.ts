@@ -51,9 +51,7 @@ currentAuth: any;
     });
   }
   createProfile() {
-    this.af.auth.subscribe(auth => {
-      this.af.database.object(`profile/${auth.uid}`).set(this.profile);
-    });
+    this.af.database.object(`profile/${this.currentAuth.uid}`).set(this.profile);
     this.router.navigate(['/content/chat']);
   }
   updateProfile() {

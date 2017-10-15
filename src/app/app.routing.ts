@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ChatComponent } from './chat/chat.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 //AuthGuard
 import { AuthGuard } from './services/auth-guard/auth-guard.service';
 
@@ -36,6 +37,10 @@ export const router: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'public',
+    component: PublicProfileComponent,
   },
   {
     path: '**',

@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { routes } from './app.routing';
 import { ConversationComponent } from './conversation/conversation.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PublicProfileComponent } from './public-profile/public-profile.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     ContentComponent,
     ChatComponent,
     ConversationComponent,
-    ProfileComponent
+    ProfileComponent,
+    PublicProfileComponent
     ],
   imports: [
     routes,

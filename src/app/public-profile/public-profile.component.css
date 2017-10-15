@@ -1,0 +1,50 @@
+input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #4C4C4C;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-bottom: 1.5em;
+  padding: 1.2em 0;
+  width: 100%
+}
+label {
+  color: #4C4C4C;
+}
+.container {
+  margin-top: 3em;
+}
+.profile-info {
+  margin-top: 1em;
+}
+.go-back{
+  color: #AA3946;
+}
+.avatar {
+  max-width: 9em;
+  height: auto;
+  border: none;
+
+}
+/* ===== Select Box ===== */
+select {
+    padding:3px;
+    width: 100%;
+    margin: 0;
+    -webkit-border-radius:0px;
+    -moz-border-radius:0px;
+    border-radius:0px;
+    border: none;
+    border-bottom: 1px solid #4C4C4C;
+    background-color: transparent;
+    color:#FFF;
+    outline:none;
+    display: inline-block;
+    cursor:pointer;
+}
+select option:first {
+  color: #4C4C4C;
+}

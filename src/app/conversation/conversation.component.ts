@@ -30,6 +30,7 @@ currentAuth: any;
     this.conversations = this.af.database.list(`conversations/${this.currentAuth.uid}`);
   }
 
+
   conversationSelect(conversation){
     this.conversation.emit(conversation.$key);
   }
