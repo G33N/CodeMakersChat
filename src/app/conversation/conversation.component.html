@@ -1,4 +1,6 @@
 <div class="col-lg-8 mx-auto">
   <h4>Seguidores</h4>
-  <button *ngFor="let conversation of conversations | async" (click)="conversationSelect(conversation)" class="btn btn-conversation">{{conversation.$key}}</button>
+  <button *ngFor="let follower of followers | async" (click)="conversationFollower(follower)" class="btn btn-conversation">{{follower.$key}}</button>
+  <h4>Seguidos</h4>
+  <button *ngFor="let followed of followeds | async" (click)="conversationFollowed(followed)" class="btn btn-conversation">{{followed.$key}}</button>
 </div>

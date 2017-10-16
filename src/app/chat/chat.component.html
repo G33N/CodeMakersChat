@@ -2,8 +2,8 @@
 <input *ngIf="conversation" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
 <div class="container vertical-align" *ngIf="!conversation">
   <div class="row">
-    <h3>Para optener mas seguidores, comparte este link en tus redes sociales para conseguirlos!</h3>
-    <a href="https://quien-ba643.firebaseapp.com/">htpps://quien-ba643.firebaseapp.com/public?profile={{ currentAuth.uid }}</a>
+    <h3>Para obtener mas seguidores, comparte este link en tus redes sociales!</h3>
+    <a routerLink="/public?profile={{currentAuth.uid}}">htpps://quien-ba643.firebaseapp.com/public?profile={{ currentAuth.uid }}</a>
   </div>
 </div>
 <div class="col-lg-12 layer">

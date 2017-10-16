@@ -12,7 +12,7 @@ export class ChatComponent implements OnInit {
   currentAuth: any;
   msgVal: string = '';
   like: boolean;
-  conversation: string;
+  conversation: any;
   welcome: string;
   followers: number;
 
@@ -35,8 +35,15 @@ export class ChatComponent implements OnInit {
       }
     });
   }
-  readMessages() {
-    this.messages = this.af.database.list(`conversations/${this.currentAuth.uid}/${this.conversation}`, {
+  readFollowerMessages() {
+    this.messages = this.af.database.list(`conversations/${this.currentAuth.uid}/${this.conversation.key}`, {
+      query: {
+        limitToLast: 40
+      }
+    });
+  }
+  readFollowedMessages() {
+    this.messages = this.af.database.list(`conversations/${this.conversation.key}/${this.currentAuth.uid}`, {
       query: {
         limitToLast: 40
       }
@@ -44,7 +51,13 @@ export class ChatComponent implements OnInit {
   }
   getConversation(ev){
     this.conversation = ev;
-    this.readMessages();
+    if (this.conversation.is == 'follower') {
+      this.readFollowerMessages();
+    }
+    else {
+      this.readFollowedMessages();
+    }
+
   }
 
   @ViewChild('scrollMe') public myScrollContainer: ElementRef;

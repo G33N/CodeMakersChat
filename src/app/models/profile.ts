@@ -4,5 +4,6 @@ export interface Profile {
   about: string,
   photoURL: string,
   gender: string,
-  followers: number
+  followers: number,
+  followed: number
 }

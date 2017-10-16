@@ -24,11 +24,17 @@ currentAuth: any;
 
   ngOnInit() {
     this.countFollowers();
+    this.countFollowed();
     this.updateProfile();
   }
   countFollowers() {
-    this.af.database.list(`conversations/${this.currentAuth.uid}`).subscribe(data => {
+    this.af.database.list(`profile/${this.currentAuth.uid}/followers`).subscribe(data => {
       this.profile.followers = data.length;
+    });
+  }
+  countFollowed() {
+    this.af.database.list(`profile/${this.currentAuth.uid}/followed`).subscribe(data => {
+      this.profile.followed = data.length;
     });
   }
   readCurrentAuth() {
@@ -62,7 +68,8 @@ currentAuth: any;
         birth:  this.profile.birth,
         gender: this.profile.gender,
         about: this.profile.about,
-        followers: this.profile.followers
+        followers: this.profile.followers,
+        followed: this.profile.followed
       };
     }
     else {
@@ -72,7 +79,8 @@ currentAuth: any;
         birth:  this.profile.birth,
         gender: this.profile.gender,
         about: this.profile.about,
-        followers: this.profile.followers
+        followers: this.profile.followers,
+        followed: this.profile.followed
       };
     }
   }

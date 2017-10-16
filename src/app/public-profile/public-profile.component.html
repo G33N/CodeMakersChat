@@ -4,15 +4,18 @@
       <h2>{{ profile.name }}!</h2>
       <img class="img-responsive avatar" src="{{profile.photoURL}}" alt="">
       <div class="col-lg-6 profile-info">
-        <h4>Seguidores {{profile.followers}}</h4>
+        <div class="col-lg-3">
+          <h4>Seguidores {{profile.followers}}</h4>
+        </div>
+        <div class="col-lg-3">
+          <h4>Seguidos {{profile.followed}}</h4>
+        </div>
       </div>
       <input type="text" placeholder="Cuenta una historia sobre ti..." [(ngModel)]="profile.about" disabled/>
       <label>Fecha de Nacimiento</label>
       <input type="date" [(ngModel)]="profile.birth" disabled/>
       <label>Genero</label>
-      <select [(ngModel)]="profile.gender" placeholder="Genero..." disabled>
-        <option *ngFor="let gender of genders | async" value="{{ gender.title }}"><i class="fa {{ gender.icon }}" aria-hidden="true"></i>{{ gender.title }}</option>
-      </select>
+      <input type="text" [(ngModel)]="profile.gender" disabled/>
       <div class="padding">
         <button type="button" class="btn btn-primary btn-block" (click)="createConversation()"> Seguir!</button>
       </div>

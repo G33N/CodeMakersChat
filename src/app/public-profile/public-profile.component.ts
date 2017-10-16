@@ -15,39 +15,54 @@ export class PublicProfileComponent implements OnInit {
   profile = {} as Profile;
   urlParam: string;
   currentAuth: any;
-
+  conversations: FirebaseListObservable<any>;
   constructor(public af: AngularFire, public router: Router) {
+
     var param = router.parseUrl(router.url).queryParams["profile"];
     this.urlParam = param;
+    this.readCurrentAuth();
     this.readProfile();
   }
 
   ngOnInit() {
-
+    this.countFollowers();
+    this.countFollowed();
   }
 
   readProfile() {
-    this.af.database.object(`profile/${this.urlParam}`).subscribe( data => {
+    this.af.database.object(`profile/${this.urlParam}`).subscribe(data => {
       this.profile = data;
+    });
+  }
+  countFollowers() {
+    this.af.database.list(`profile/${this.urlParam}/followers`).subscribe(data => {
+      this.profile.followers = data.length;
+    });
+  }
+  countFollowed() {
+    this.af.database.list(`profile/${this.urlParam}/followed`).subscribe(data => {
+      this.profile.followed = data.length;
     });
   }
   readCurrentAuth() {
     this.af.auth.subscribe(auth => {
       if (auth) {
-          this.currentAuth = auth;
+        this.currentAuth = auth;
       }
     });
   }
-  createConversation(){
+  createConversation() {
     var user = this.urlParam;
-    var from = this.currentAuth;
+    var from = this.currentAuth.uid;
     var message = {
-      data: new Date(),
-      name: "MR Z",
-      body: "Holaaa",
-      like: false
+      0: {
+        data: new Date(),
+        name: "MR Z",
+        body: "Holaaa",
+        like: false
+      }
     }
-    this.af.database.object(`conversations/${this.urlParam}/${this.currentAuth}`).set(message);
+    this.af.database.object(`conversations/${user}/${from}`).set(message);
   }
 
 }

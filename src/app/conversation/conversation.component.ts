@@ -7,12 +7,14 @@ import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 
   styleUrls: ['./conversation.component.css']
 })
 export class ConversationComponent implements OnInit {
-conversations: FirebaseListObservable<any>;
-currentAuth: any;
-@Output() conversation = new EventEmitter();
+  followers: FirebaseListObservable<any>;
+  followeds: FirebaseListObservable<any>;
+  currentAuth: any;
+  @Output() conversation = new EventEmitter();
   constructor(public af: AngularFire) {
     this.readCurrentAuth();
-    this.readConversations();
+    this.readConversationsFollowers();
+    this.readConversationsFollowed();
   }
 
   ngOnInit() {
@@ -21,17 +23,20 @@ currentAuth: any;
   readCurrentAuth() {
     this.af.auth.subscribe(auth => {
       if (auth) {
-          this.currentAuth = auth;
+        this.currentAuth = auth;
       }
     });
   }
-
-  readConversations() {
-    this.conversations = this.af.database.list(`conversations/${this.currentAuth.uid}`);
+  readConversationsFollowers() {
+    this.followers = this.af.database.list(`profile/${this.currentAuth.uid}/followers`);
   }
-
-
-  conversationSelect(conversation){
-    this.conversation.emit(conversation.$key);
+  readConversationsFollowed() {
+    this.followeds = this.af.database.list(`profile/${this.currentAuth.uid}/followed`);
+  }
+  conversationFollower(follower) {
+    this.conversation.emit({key: follower.$key, is: 'follower'});
+  }
+  conversationFollowed(followed) {
+    this.conversation.emit({key: followed.$key, is: 'followed'});
   }
 }
