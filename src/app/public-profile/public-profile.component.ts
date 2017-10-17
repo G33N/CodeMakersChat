@@ -55,14 +55,16 @@ export class PublicProfileComponent implements OnInit {
     var user = this.urlParam;
     var from = this.currentAuth.uid;
     var message = {
-      0: {
         data: new Date(),
-        name: "MR Z",
-        body: "Holaaa",
-        like: false
+        name: "Mandale",
+        body: "Que la fuerza te acompañe",
+        like: true
       }
-    }
-    this.af.database.object(`conversations/${user}/${from}`).set(message);
+
+    this.af.database.object(`profile/${user}/followers/`).set({[from]: true});
+    this.af.database.object(`profile/${from}/followed/`).set({[user]: true});
+    this.af.database.list(`conversations/${user}/${from}`).push(message);
+    this.router.navigate(['/content/chat']);
   }
 
 }

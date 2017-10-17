@@ -1,14 +1,14 @@
 # Code Makers Chat
 
-![alt text](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/MAndale-04.png?alt=media&token=09b1e983-8064-49d3-8d02-2f563b899320)
+![alt text](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/MandaleLogo-04.png?alt=media&token=cbd41f92-f6d0-4120-ab6a-af511a3f7502)
 
 A chat with angular 4 and Firebase
 
 ## DB schema
 
-![dbSchema](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/git%2FScreen%20Shot%202017-10-14%20at%2000.48.34.png?alt=media&token=b0485d11-0fe6-4e08-805a-14229f85ab0d)
-
-<!-- -|users
+![dbSchema](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/git%2FScreen%20Shot%202017-10-17%20at%2000.12.33.png?alt=media&token=9a3f408c-f540-401a-a49e-9c00e4fdb633)
+<!--
+-|users
     -|$uid
         name: string
         followers: number
@@ -16,6 +16,10 @@ A chat with angular 4 and Firebase
         birth: date
         about: string
         photoURL: string
+        -|followers
+            -|$key: true
+        -|followeds
+            -|$key: true
 
 -|conversations
     -|$uid
@@ -24,7 +28,11 @@ A chat with angular 4 and Firebase
                 name: string
                 date: date
                 body: string
-                like: boolean -->
+                like: boolean
+-|genders
+    -|$key
+        icon: string
+        title: string -->
 
 ## How install
 

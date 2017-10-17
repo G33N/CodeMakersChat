@@ -21,7 +21,7 @@ export class ChatComponent implements OnInit {
   }
 
   chatSend(theirMessage: string) {
-      this.messages.push({ body: theirMessage, date: new Date(), like: false, name: 'Celiz Matias' });
+      this.messages.push({ body: theirMessage, date: new Date(), like: false, name: this.currentAuth.displayName });
     this.msgVal = '';
   }
 
