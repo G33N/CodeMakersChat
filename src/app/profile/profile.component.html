@@ -6,12 +6,13 @@
       <img class="img-responsive avatar" src="{{profile.photoURL}}" alt="">
       <div class="col-lg-6 profile-info">
         <div class="col-lg-3">
-          <h4>Seguidores {{profile.followers}}</h4>
+          <h4>Seguidores {{followers?.length || '0'}}</h4>
         </div>
         <div class="col-lg-3">
-          <h4>Seguidos {{profile.followed}}</h4>
+          <h4>Seguidos {{followeds?.length || '0'}}</h4>
         </div>
       </div>
+      <input type="text" placeholder="Este sera tu apodo para chatear anonimamente." [(ngModel)]="profile.alias" disabled/>
       <input type="text" placeholder="Cuenta una historia sobre ti..." [(ngModel)]="profile.about" />
       <label>Fecha de Nacimiento</label>
       <input type="date" [(ngModel)]="profile.birth" />

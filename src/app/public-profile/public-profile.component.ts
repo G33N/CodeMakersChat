@@ -16,6 +16,8 @@ export class PublicProfileComponent implements OnInit {
   urlParam: string;
   currentAuth: any;
   conversations: FirebaseListObservable<any>;
+  followers: any;
+  followeds: any;
   constructor(public af: AngularFire, public router: Router) {
 
     var param = router.parseUrl(router.url).queryParams["profile"];
@@ -35,13 +37,13 @@ export class PublicProfileComponent implements OnInit {
     });
   }
   countFollowers() {
-    this.af.database.list(`profile/${this.urlParam}/followers`).subscribe(data => {
-      this.profile.followers = data.length;
+    this.af.database.list(`followers/${this.urlParam}`).subscribe(data => {
+      this.followers = data;
     });
   }
   countFollowed() {
-    this.af.database.list(`profile/${this.urlParam}/followed`).subscribe(data => {
-      this.profile.followed = data.length;
+    this.af.database.list(`followeds/${this.urlParam}`).subscribe(data => {
+      this.followeds = data;
     });
   }
   readCurrentAuth() {
@@ -61,8 +63,8 @@ export class PublicProfileComponent implements OnInit {
         like: true
       }
 
-    this.af.database.object(`profile/${user}/followers/`).set({[from]: true});
-    this.af.database.object(`profile/${from}/followed/`).set({[user]: true});
+    this.af.database.object(`followers/${user}`).set({[from]: true});
+    this.af.database.object(`followeds/${from}`).set({[user]: true});
     this.af.database.list(`conversations/${user}/${from}`).push(message);
     this.router.navigate(['/content/chat']);
   }

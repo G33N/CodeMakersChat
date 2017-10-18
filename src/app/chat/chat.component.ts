@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
 import { Router } from '@angular/router';
+// MODULES
+import { Profile } from '../models/profile';
 
 @Component({
   selector: 'app-chat',
@@ -9,22 +11,44 @@ import { Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
   messages: FirebaseListObservable<any>;
+  profile = {} as Profile;
   currentAuth: any;
   msgVal: string = '';
   like: boolean;
   conversation: any;
   welcome: string;
-  followers: number;
+  messageAs: string;
+  messageName: string;
 
   constructor(public af: AngularFire, public router: Router) {
     this.readCurrentAuth();
+    this.readProfile()
   }
 
   chatSend(theirMessage: string) {
-      this.messages.push({ body: theirMessage, date: new Date(), like: false, name: this.currentAuth.displayName });
+    this.setMessageName();
+      var message = {
+        body: theirMessage,
+        date: new Date(),
+        like: false,
+        name: this.messageName
+      }
+      this.messages.push(message);
     this.msgVal = '';
   }
-
+  setMessageName(){
+    if (this.messageAs == 'follower') {
+        this.messageName = this.profile.alias;
+    }
+    else {
+      this.messageName = this.profile.name;
+    }
+  }
+  readProfile() {
+    this.af.database.object(`profile/${this.currentAuth.uid}`).subscribe( data => {
+      this.profile = data;
+    });
+  }
   readCurrentAuth() {
     this.af.auth.subscribe(auth => {
       if (auth) {
@@ -41,6 +65,7 @@ export class ChatComponent implements OnInit {
         limitToLast: 40
       }
     });
+    this.messageAs = 'follower';
   }
   readFollowedMessages() {
     this.messages = this.af.database.list(`conversations/${this.conversation.key}/${this.currentAuth.uid}`, {
@@ -48,6 +73,7 @@ export class ChatComponent implements OnInit {
         limitToLast: 40
       }
     });
+    this.messageAs = 'followed';
   }
   getConversation(ev){
     this.conversation = ev;

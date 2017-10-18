@@ -14,7 +14,7 @@ export class ConversationComponent implements OnInit {
   constructor(public af: AngularFire) {
     this.readCurrentAuth();
     this.readConversationsFollowers();
-    this.readConversationsFollowed();
+    this.readConversationsFolloweds();
   }
 
   ngOnInit() {
@@ -28,10 +28,10 @@ export class ConversationComponent implements OnInit {
     });
   }
   readConversationsFollowers() {
-    this.followers = this.af.database.list(`profile/${this.currentAuth.uid}/followers`);
+    this.followers = this.af.database.list(`followers/${this.currentAuth.uid}`);
   }
-  readConversationsFollowed() {
-    this.followeds = this.af.database.list(`profile/${this.currentAuth.uid}/followed`);
+  readConversationsFolloweds() {
+    this.followeds = this.af.database.list(`followeds/${this.currentAuth.uid}`);
   }
   conversationFollower(follower) {
     this.conversation.emit({key: follower.$key, is: 'follower'});

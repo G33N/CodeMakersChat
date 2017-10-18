@@ -12,10 +12,12 @@ import { Profile } from '../models/profile';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-loginWith: string;
-genders: FirebaseListObservable<any>;
-profile = {} as Profile;
-currentAuth: any;
+  loginWith: string;
+  genders: FirebaseListObservable<any>;
+  profile = {} as Profile;
+  followers: any;
+  followeds: any;
+  currentAuth: any;
   constructor(public af: AngularFire, public router: Router) {
     this.readCurrentAuth();
     this.readProfile();
@@ -28,23 +30,23 @@ currentAuth: any;
     this.updateProfile();
   }
   countFollowers() {
-    this.af.database.list(`profile/${this.currentAuth.uid}/followers`).subscribe(data => {
-      this.profile.followers = data.length;
+    this.af.database.list(`followers/${this.currentAuth.uid}`).subscribe(data => {
+      this.followers = data;
     });
   }
   countFollowed() {
-    this.af.database.list(`profile/${this.currentAuth.uid}/followed`).subscribe(data => {
-      this.profile.followed = data.length;
+    this.af.database.list(`followeds/${this.currentAuth.uid}`).subscribe(data => {
+      this.followeds = data;
     });
   }
   readCurrentAuth() {
     this.af.auth.subscribe(auth => {
       if (auth) {
-          this.currentAuth = auth;
+        this.currentAuth = auth;
       }
     });
   }
-  readGenders(){
+  readGenders() {
     this.genders = this.af.database.list('genders', {
       query: {
         limitToLast: 3
@@ -52,7 +54,7 @@ currentAuth: any;
     });
   }
   readProfile() {
-    this.af.database.object(`profile/${this.currentAuth.uid}`).subscribe( data => {
+    this.af.database.object(`profile/${this.currentAuth.uid}`).subscribe(data => {
       this.profile = data;
     });
   }
@@ -60,27 +62,37 @@ currentAuth: any;
     this.af.database.object(`profile/${this.currentAuth.uid}`).set(this.profile);
     this.router.navigate(['/content/chat']);
   }
+  pickName() {
+    const numberOfUsers = 50;
+    const randomIndex = Math.floor(Math.random() * numberOfUsers);
+
+    this.af.database.object(`names/${randomIndex}`).subscribe(data => {
+      this.profile.alias = data.name;
+    });
+
+  }
   updateProfile() {
+    if (!this.profile.alias) {
+        this.pickName();
+    }
     if (this.currentAuth.facebook) {
       this.profile = {
         name: this.currentAuth.facebook.displayName,
+        alias: this.profile.alias,
         photoURL: this.currentAuth.facebook.photoURL,
-        birth:  this.profile.birth,
+        birth: this.profile.birth,
         gender: this.profile.gender,
-        about: this.profile.about,
-        followers: this.profile.followers,
-        followed: this.profile.followed
+        about: this.profile.about
       };
     }
     else {
       this.profile = {
         name: this.currentAuth.google.displayName,
+        alias: this.profile.alias,
         photoURL: this.currentAuth.google.photoURL,
-        birth:  this.profile.birth,
+        birth: this.profile.birth,
         gender: this.profile.gender,
-        about: this.profile.about,
-        followers: this.profile.followers,
-        followed: this.profile.followed
+        about: this.profile.about
       };
     }
   }
