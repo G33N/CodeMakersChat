@@ -22,7 +22,10 @@ export class ChatComponent implements OnInit {
 
   constructor(public af: AngularFire, public router: Router) {
     this.readCurrentAuth();
-    this.readProfile()
+    if(this.currentAuth){
+        this.readProfile();
+    }
+
   }
 
   chatSend(theirMessage: string) {
@@ -37,7 +40,7 @@ export class ChatComponent implements OnInit {
     this.msgVal = '';
   }
   setMessageName(){
-    if (this.messageAs == 'follower') {
+    if (this.messageAs == 'followed') {
         this.messageName = this.profile.alias;
     }
     else {
@@ -53,9 +56,6 @@ export class ChatComponent implements OnInit {
     this.af.auth.subscribe(auth => {
       if (auth) {
         this.currentAuth = auth;
-      }
-      else {
-        this.router.navigate(['/welcome']);
       }
     });
   }

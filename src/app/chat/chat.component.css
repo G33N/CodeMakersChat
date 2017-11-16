@@ -11,7 +11,9 @@ input#message {
   padding: 1.2em 0;
   width: 100%
 }
-
+.conversations {
+  background: #323235;
+}
 .chat-container {
   display: block;
   width: 100%;
@@ -29,14 +31,14 @@ input#message {
   height: 30em;
 }
 
-.layer {
+/*.layer {
   position: relative;
   height: 30em;
   background: -moz-linear-gradient(top, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
   background: -webkit-linear-gradient(top, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
   background: linear-gradient(to bottom, rgba(36, 34, 38, 0.9) 0%, rgba(36, 34, 38, 0.9) 4%, rgba(36, 34, 38, 0.7) 15%, rgba(36, 34, 38, 0.2) 24%, rgba(36, 34, 38, 0) 27%, rgba(36, 34, 38, 0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6242226', endColorstr='#00242226', GradientType=0);
-}
+}*/
 
 .chat-container a {
   text-transform: uppercase;

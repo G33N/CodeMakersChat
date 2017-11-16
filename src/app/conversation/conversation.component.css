@@ -1,5 +1,10 @@
-.btn-conversation{
-  border-radius: 0px;
+.list-group-item {
+  width: 100%;
+  border-radius: 0;
   background-color: #534962;
   color: #FFF;
+  width: 100%;
+}
+div {
+  padding: 0;
 }

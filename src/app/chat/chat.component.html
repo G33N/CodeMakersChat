@@ -1,16 +1,24 @@
-<app-conversation (conversation)="getConversation($event)"></app-conversation>
-<input *ngIf="conversation" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
-<div class="container vertical-align" *ngIf="!conversation">
+<div class="container-fluid">
   <div class="row">
-    <h3>Para obtener mas seguidores, comparte este link en tus redes sociales!</h3>
-    <a routerLink="/public?profile={{currentAuth.uid}}">htpps://quien-ba643.firebaseapp.com/public?profile={{ currentAuth.uid }}</a>
-  </div>
-</div>
-<div class="col-lg-12 layer">
-  <div class="col-lg-12 chat-messages">
-    <div class="chat-container" *ngFor="let message of messages | async">
-      <a href="#">{{ message.name }}</a>
-      <p class="text-wrap" innerHtml="{{ message.body | linkify }}"></p>
+    <div class="col-md-3 col-lg-3 pull-left conversations shadow">
+      <app-conversation (conversation)="getConversation($event)"></app-conversation>
+    </div>
+    <div class="col-lg-9 pull-right">
+      <input *ngIf="conversation" type="text" id="message" placeholder="Chat here..." (keyup.enter)="chatSend($event.target.value)" [(ngModel)]="msgVal" />
+      <div class="container vertical-align" *ngIf="!conversation">
+        <div class="row">
+          <h3>Para obtener mas seguidores, comparte este link en tus redes sociales!</h3>
+          <a *ngIf="currentAuth" routerLink="/public?profile={{currentAuth.uid}}">htpps://quien-ba643.firebaseapp.com/public?profile={{ currentAuth.uid }}</a>
+        </div>
+      </div>
+      <div class="col-lg-12 layer">
+        <div class="col-lg-12 chat-messages">
+          <div class="chat-container" *ngFor="let message of messages | async">
+            <a href="#">{{ message.name }}</a>
+            <p class="text-wrap" innerHtml="{{ message.body | linkify }}"></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

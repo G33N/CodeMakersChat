@@ -12,17 +12,6 @@ export class WelcomeComponent implements OnInit {
   constructor(public af: AngularFire, public router: Router) { }
 
   ngOnInit() {
-    //this.checkSession();
-  }
-
-  checkSession(){
-    this.af.auth.subscribe(auth => {
-      if (auth) {
-        this.router.navigate(['/content/chat']);
-      }
-      else {
-        this.router.navigate(['/welcome']);
-      }
-    });
+    // this.checkSession();
   }
 }

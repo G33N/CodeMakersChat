@@ -1,6 +1,16 @@
-<div class="col-lg-8 mx-auto">
+<div class="followers-header">
   <h4>Seguidores</h4>
-  <button *ngFor="let follower of followers | async" (click)="conversationFollower(follower)" class="btn btn-conversation">{{follower.$key}}</button>
+</div>
+<div class="list-group" *ngIf="followers">
+  <a class="list-group-item" *ngFor="let follower of followers | async" (click)="conversationFollower(follower)">
+    {{ getAliasByKey(follower.$key) }}
+  </a>
+</div>
+<div class="followeds-header">
   <h4>Seguidos</h4>
-  <button *ngFor="let followed of followeds | async" (click)="conversationFollowed(followed)" class="btn btn-conversation">{{followed.$key}}</button>
+</div>
+<div class="list-group" *ngIf="followeds">
+  <a class="list-group-item " *ngFor="let followed of followeds | async" (click)="conversationFollowed(followed)">
+    {{ getNameByKey(followed.$key) }}
+  </a>
 </div>

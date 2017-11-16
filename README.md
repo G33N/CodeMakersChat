@@ -6,8 +6,6 @@ A chat with angular 4 and Firebase
 
 ## DB schema
 
-![dbSchema](https://firebasestorage.googleapis.com/v0/b/quien-ba643.appspot.com/o/git%2FScreen%20Shot%202017-10-17%20at%2000.12.33.png?alt=media&token=9a3f408c-f540-401a-a49e-9c00e4fdb633)
-<!--
 -|users
     -|$uid
         name: string
@@ -20,7 +18,6 @@ A chat with angular 4 and Firebase
             -|$key: true
         -|followeds
             -|$key: true
-
 -|conversations
     -|$uid
         -|fromID
@@ -32,7 +29,13 @@ A chat with angular 4 and Firebase
 -|genders
     -|$key
         icon: string
-        title: string -->
+        title: string
+-|followers
+    -|$uid
+        follower.uid: true
+-|followeds
+    -|$uid
+        followed.uid: true
 
 ## How install
 

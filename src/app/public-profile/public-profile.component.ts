@@ -63,8 +63,10 @@ export class PublicProfileComponent implements OnInit {
         like: true
       }
 
-    this.af.database.object(`followers/${user}`).set({[from]: true});
-    this.af.database.object(`followeds/${from}`).set({[user]: true});
+    //this.af.database.list(`followers/${user}`).push({[from]: true});
+    this.af.database.object(`followers/${user}`).update({[from]: true});
+    //this.af.database.list(`followeds/${from}`).push({[user]: true});
+    this.af.database.object(`followeds/${from}`).update({[user]: true});
     this.af.database.list(`conversations/${user}/${from}`).push(message);
     this.router.navigate(['/content/chat']);
   }

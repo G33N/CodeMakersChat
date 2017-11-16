@@ -14,15 +14,7 @@ export class ContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    
-  }
 
-  checkSession(){
-    this.af.auth.subscribe(auth => {
-      if (!auth) {
-        this.router.navigate(['/welcome']);
-      }
-    });
   }
 
 }
